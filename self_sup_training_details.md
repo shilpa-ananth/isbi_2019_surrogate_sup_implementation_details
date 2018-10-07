@@ -4,8 +4,8 @@
 ## Data
 
 Lung lobe segmentation consists of assigning every voxel in a chest CT to one of the 5 major lobes of the lung or back-ground. 
-355 CT series from LIDC[1] dataset was hand labeled using 3D-slicer[2]; the train-validation-test split is 250, 20, 85. 
-For self-supervised pretraining, we used the entire LIDC dataset excluding the validation and testing set, which consists of about 1000 CT series.
+355 CT series from LIDC[1] dataset (1018 series total) was hand labeled using 3D-slicer [2]; the train-validation-test split is 250, 20, 85. Since the dataset
+For self-supervised pretraining, we used the entire LIDC dataset excluding the testing set, consists of 933 CT series.
 
 
 For preprocessing, the CT images are resampled to 1.8mm x 1mm x 1mm, and then center cropped to a common shape of 200x256x320, in z, y, and x axis.
@@ -16,13 +16,13 @@ Then the voxel values are further scaled to the range from -1 to 1.
 ## CNN architectral and training
 
 Progressive Dense-Vnet (PDVnet)[3] was used for lung lobe segmentation; the architecture is shown in the figure below. 
-For pretraining with self-supervision, the feature maps from the last convolution layer goes through global-average-pooling and then a dense layer with 3 neuron output for for predicting flipping z, y, and x axis. 
+For pretraining with self-supervision, the feature maps from the last convolution layer go through global-average-pooling and then a dense layer with 3 neuron output for for predicting flipping z, y, and x axis. 
 Sigmoid cross entropy loss is used.
-For lung lobe segmentation, the weights pretrained as described above are used to initialize the same network. The same Dice based loss function as described in the work of Ali, et al. was used to train for the lobe segmentation task.
+For lung lobe segmentation, the weights pretrained as described above are used to initialize the same network. The same Dice based loss function as described in [3] was used to train the lobe segmentation model.
 
 The network was implemented using Tensorflow[4].
 We used momentum optimizer with default configurations and learing rate of 0.01.
-Both axis-flipping and lobe segmentation are trained on a nvidia 1080ti GPU with batch size of 1.
+Both the surrogate supervision task and the target lung lobe segmentation model are trained on a nvidia 1080ti GPU with batch size of 1.
 
 
 ![Progressive Dense-Vnet](pdvnet.png)
