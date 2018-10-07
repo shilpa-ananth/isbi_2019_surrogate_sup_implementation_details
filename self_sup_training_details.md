@@ -27,7 +27,7 @@ Both the surrogate supervision task and the target lung lobe segmentation model 
 
 ![Progressive Dense-Vnet](pdvnet.png)
 
-The box plot below shows the comparison of average lobe segmentation dice score on the testset between PDVnet trained with and without initilization with self-supervised pretraining. X axis shows the percentage of the training data used and the y axis shows the average lobe dice score.
+The box plot below shows the comparison of average lobe segmentation dice score on the test set between PDVnet trained with and without initilization with self-supervised pretraining. x-axis shows the percentage of the training data used and the y axis shows the average dice score for all 5 lobes.
 
 ![Lobe Dice Compare](boxcompare.png)
 
