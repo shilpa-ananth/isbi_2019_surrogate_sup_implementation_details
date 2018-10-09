@@ -8,5 +8,5 @@
 
 * Skin Segmentation [page link](https://github.com/plantveryan/isbi_2019_surrogate_sup_implementation_details/blob/master/Surrogate-Supervision-for-FPR-and-Skin-master/Surrogate_Supervision_for_Skin.md)
 
-* Diabetic Retinopathy [page link]()
+* Diabetic Retinopathy [page link](https://github.com/plantveryan/isbi_2019_surrogate_sup_implementation_details/blob/master/DR/dr.md)
 
